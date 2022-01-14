@@ -1,6 +1,6 @@
 
 from flask import Flask, redirect, render_template, request
-from models import db, User
+from models import db, User, Post
 
 app = Flask(__name__)
 app.config['SECRET KEY'] = 'nothing so secret'
@@ -8,13 +8,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogly'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 
-
-
-
 db.app = app
 db.init_app(app)
-# db.drop_all()
-# db.create_all()
+
 
 @app.route('/')
 def show_users():
@@ -48,7 +44,8 @@ def show_user_detials(user_id):
     """displaying detials of a user"""
 
     user = User.query.get_or_404(user_id)
-    return render_template('user_detail.html', user=user)
+    posts = Post.query.filter_by(user_id=user_id).all()
+    return render_template('user_detail.html', user=user, posts=posts)
 
 @app.route('/edit_user/<user_id>')
 def show_edit_form(user_id):
