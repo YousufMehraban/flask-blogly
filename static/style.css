@@ -19,11 +19,12 @@ img{
     display:inline-block;
     position:fixed;
     width: 200px;
-    height: 250px;
+    height: auto;
     margin: 2px;
     font-family: Arial, Helvetica, sans-serif;
-    
+    /* background-color: blueviolet; */
 }
+
 
 #edit {
     width: 60px;
@@ -40,6 +41,15 @@ img{
     font-weight: bold;
 }
 
+#add_post {
+    display: inline-block;
+    width: auto;
+    height: 30px;
+    background-color: blue;
+    color: cornsilk;
+    font-weight: bold;
+}
+
 #cancel-edit{
     display: inline-block;
     width: 85px;
@@ -52,3 +62,7 @@ img{
     color: black;
 }
 
+.links{
+    text-decoration: none;
+    
+}

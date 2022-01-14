@@ -10,22 +10,20 @@
 
 <div id="user">
 <h1 >{{user.first_name}} {{user.last_name}}</h1>
-<a href="/edit_user/{{user.id}}">
+<a href="/edit_user/{{user.id}}" class="links">
 <button id="edit">Edit</button>
 </a>
-<a href="/delete/{{user.id}}">
+<a href="/delete/{{user.id}}" class="links">
 <button id="delete">Delete</button>
 </a>
-</div>
 
-<div>
     <h1>Posts</h1>
         <ul>
             {% for post in posts %}
-            <li> <a href="/{{post.id}}">{{post.title}}</a> </li>
+            <li> <a href="/post/{{post.id}}">{{post.title}}</a> </li>
             {% endfor %}
         </ul>
-        <a href="/add_post"><button>Add Post</button></a>
+        <a href="/add_post/{{user.id}}"><button id="add_post">Add Post</button></a>
 
 </div>
 

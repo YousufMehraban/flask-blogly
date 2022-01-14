@@ -1,6 +1,7 @@
 from unittest import TestCase
+
+from flask import redirect
 from app import app
-import pdb
 
 
 class Testing_App(TestCase):
@@ -43,3 +44,25 @@ class Testing_App(TestCase):
 
             self.assertEqual(res.status_code, 200)
             self.assertIn('<button>Save Edit</button>', html)
+
+
+    def test_show_post_form(self):
+        """testing the add post form is displayed """
+
+        with app.test_client() as client:
+            res = client.get('/add_post/1')
+            html = res.get_data(as_text=True)
+
+            self.assertEqual(res.status_code, 200)
+            self.assertIn('Add New Post', html)
+
+    def test_edit_post(self):
+        """testing the post is submitted and added it the database"""
+
+        with app.test_client() as client:
+            res = client.get('/edit_post/1')
+            html = res.get_data(as_text=True)
+
+            self.assertEqual(res.status_code, 200)
+            self.assertIn('Edit Post for', html)
+
